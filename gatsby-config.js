@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "grommet",
+    title: "Grommet Test",
   },
   plugins: [
     "gatsby-plugin-postcss",
@@ -16,6 +16,14 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    'gatsby-transformer-json',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: "projectData",
+        path: './src/data/',
+      },
     },
   ],
 };
