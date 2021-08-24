@@ -24,7 +24,7 @@ export const PageHeader = ({gridArea, subtitle, showSidebar, toggleSidebar, ...p
   return (
       <AppBar gridArea={gridArea}>
         <Helmet title={title} />
-        <Heading level="3" margin="none" color="white">
+        <Heading level="3" margin="none"  color="white">
           <StaticImage src={'../../images/windlab-logo.png'} height={36} pad={{right: 'small'}} alt="CPP Logo"/>
          <Text as="span" size="xlarge" margin={{left: 'medium'}}>{subtitle}</Text>
         </Heading>

@@ -1,8 +1,7 @@
-import {Box, DataTable, Text, Main} from 'grommet'
-import {Checkmark} from 'grommet-icons'
+import {DataTable, Main, Box} from 'grommet'
 import {columns} from './columns'
 import React from 'react'
-
+import {Toast} from '../Toaster'
 
 export const ProjectTable = ({data, showSidebar, ...props}) => {
   return (
@@ -13,7 +12,11 @@ export const ProjectTable = ({data, showSidebar, ...props}) => {
             data={data}
             sortable={true}
         />
-        <Text as="p">Sidebar? {showSidebar ? 'true' : 'false'}</Text>
+        <Box fill flex>
+        <Toast status="ok"
+               message="This is the message"
+               title="It Worked!" />
+        </Box>
       </Main>
   )
 }
