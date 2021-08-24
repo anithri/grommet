@@ -43,7 +43,7 @@ export const MainNavigation = ({showSidebar, closeSidebar}) => {
             <Accordion>
               <AccordionPanel label="Projects">
                 <Box>
-                  <List primaryKey="name" data={projects} action={ActionUrl} />
+                  <List primaryKey="name" data={projects} children={ActionUrl} />
                 </Box>
               </AccordionPanel>
               <AccordionPanel label="Reports">

@@ -2,20 +2,30 @@ import {Card, CardBody, CardFooter, CardHeader, Heading, Text, Box, Distribution
 import {OfficeFlag} from '../OfficeFlag'
 import React from 'react'
 
-const colors = {AU: 'red', CA: 'blue', US: 'green'}
+const officeColors = {AU: 'red', CA: 'blue', US: 'green'}
+const statusColors = {active: 'green', proposal: 'blue', preliminary: 'red'}
 
-const makeDistroData = data => Object.entries(colors)
+const makeOfficeDistroData = data => Object.entries(officeColors)
     .map(([office, color]) => {
       return {
         office_location_type: office,
         color,
-        value: data.filter(({office_location_type}) => office_location_type == office).length
+        value: data.filter(({office_location_type}) => office_location_type === office).length
       }
     })
 
+const makeStatusDistroData = data => Object.entries(statusColors)
+    .map(([statusStr, color]) => {
+      return {
+        status: statusStr,
+        color,
+        value: data.filter(({status}) => status === statusStr).length
+      }
+    })
 
 export const Sidebar = ({gridArea, data, ...props}) => {
-
+  const d = makeOfficeDistroData(data)
+  console.log(d)
   return (
       <Box pad="small">
         <Card gridArea={gridArea} width={'auto'} height="full" background="light-1">
@@ -28,18 +38,19 @@ export const Sidebar = ({gridArea, data, ...props}) => {
           </CardHeader>
 
           <CardBody background="cpp-blue-light">
-            <Distribution values={makeDistroData(data)}>
+            <Distribution values={d}>
               {value => (
                   <Box pad="small" background={value.color} fill>
-                    <OfficeFlag {...value} size="xxlarge" />
-                    <Text size="large" color="white">{value.office_location_type} - {value.value}</Text>
+                    <Text size="large" color="white">{value.status} - {value.value}</Text>
                   </Box>
               )}
             </Distribution>
             Body!!!
           </CardBody>
 
-          <CardFooter background="cpp-blue" color="white"><Text color="white">Footer</Text></CardFooter>
+          <CardFooter background="cpp-blue" color="white">
+
+          </CardFooter>
         </Card>
       </Box>
   )
